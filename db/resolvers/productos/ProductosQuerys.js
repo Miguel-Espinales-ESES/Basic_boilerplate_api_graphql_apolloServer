@@ -19,6 +19,5 @@ export const obtenerProductoPorId = async (_, { id }) => {
     return producto
   } catch (e) {
     throw new Error('Producto no encontrado')
-    console.log('Error: ', e)
   }
 }
