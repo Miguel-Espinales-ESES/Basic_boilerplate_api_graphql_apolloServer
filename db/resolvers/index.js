@@ -3,14 +3,21 @@
 import { obtenerUsuario } from './usuario/UsuarioQuerys'
 import { nuevoUsuario, autenticarUsuario } from './usuario/UsuarioMutations'
 
+// producto
+import { nuevoProducto } from './productos/ProductosMutations'
+import { obtenerProductos, obtenerProductoPorId } from './productos/ProductosQuerys'
+
 // Resolver
 const resolvers = {
   Query: {
-    obtenerUsuario
+    obtenerUsuario,
+    obtenerProductos,
+    obtenerProductoPorId
   },
   Mutation: {
     nuevoUsuario,
-    autenticarUsuario
+    autenticarUsuario,
+    nuevoProducto
   }
 }
 
