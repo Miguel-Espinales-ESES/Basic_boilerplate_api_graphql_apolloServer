@@ -8,7 +8,7 @@ conectarDB();
 
 // server
 const server = new ApolloServer({
-  typeDefs: [typeDefs],
+  typeDefs,
   resolvers,
 });
 

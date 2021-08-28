@@ -21,3 +21,17 @@ export const actualizarProducto = async (_, { id, input }) => {
   producto = await ProductoModel.findOneAndUpdate({ _id: id }, input, { new: true })
   return producto
 }
+
+
+export const eliminarProducto = async (_, { id }) => {
+   // revisar si el producto existe
+   let producto = await ProductoModel.findById(id)
+   if (!producto) {
+     throw new Error('Producto no encontrado')
+   }
+
+   // eliminar el producto 
+   await ProductoModel.findOneAndDelete({_id: id})
+
+   return 'Producto Eliminado'
+}

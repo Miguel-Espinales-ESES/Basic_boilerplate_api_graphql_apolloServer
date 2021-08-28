@@ -4,7 +4,7 @@ import { obtenerUsuario } from './usuario/UsuarioQuerys'
 import { nuevoUsuario, autenticarUsuario } from './usuario/UsuarioMutations'
 
 // producto
-import { nuevoProducto, actualizarProducto } from './productos/ProductosMutations'
+import { nuevoProducto, actualizarProducto, eliminarProducto } from './productos/ProductosMutations'
 import { obtenerProductos, obtenerProductoPorId } from './productos/ProductosQuerys'
 
 // Resolver
@@ -18,7 +18,8 @@ const resolvers = {
     nuevoUsuario,
     autenticarUsuario,
     nuevoProducto,
-    actualizarProducto
+    actualizarProducto,
+    eliminarProducto
   }
 }
 
