@@ -4,7 +4,7 @@ import { obtenerUsuario } from './usuario/UsuarioQuerys'
 import { nuevoUsuario, autenticarUsuario } from './usuario/UsuarioMutations'
 
 // producto
-import { nuevoProducto } from './productos/ProductosMutations'
+import { nuevoProducto, actualizarProducto } from './productos/ProductosMutations'
 import { obtenerProductos, obtenerProductoPorId } from './productos/ProductosQuerys'
 
 // Resolver
@@ -17,7 +17,8 @@ const resolvers = {
   Mutation: {
     nuevoUsuario,
     autenticarUsuario,
-    nuevoProducto
+    nuevoProducto,
+    actualizarProducto
   }
 }
 
