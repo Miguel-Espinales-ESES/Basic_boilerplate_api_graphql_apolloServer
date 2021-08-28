@@ -1,19 +1,18 @@
-import { ApolloServer } from 'apollo-server'
-import typeDefs from './db/schema'
-import resolvers from './db/resolvers'
-import conectarDB from './config/db'
+import { ApolloServer } from "apollo-server";
+import typeDefs from "./db/schema";
+import resolvers from "./db/resolvers";
+import conectarDB from "./config/db";
 
 // conectar a la base de datos
-conectarDB()
+conectarDB();
 
 // server
 const server = new ApolloServer({
-  typeDefs,
-  resolvers
-})
+  typeDefs: [typeDefs],
+  resolvers,
+});
 
 // Iniciar servidor
-server.listen()
-  .then(({ url }) => {
-    console.log(`Servidor listo en el puerto: ${url}`)
-  })
+server.listen().then(({ url }) => {
+  console.log(`Servidor listo en el puerto: ${url}`);
+});
