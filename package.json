@@ -16,7 +16,7 @@
     "graphql": "^15.5.0",
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.29.1",
-    "mongoose": "^5.11.19"
+    "mongoose": "^5.13.8"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.10",

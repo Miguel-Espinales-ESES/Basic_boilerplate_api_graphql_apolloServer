@@ -9,7 +9,11 @@ export const obtenerProductos = async (_, { input }) => {
   }
 }
 
-export const obtenerProductoPorId = async (_, { id }) => {
+export const obtenerProductoPorId = async (_, { id }, context) => {
+  // const { usuario: usuarioContext} = context
+  // if (!usuarioContext) {
+  //   throw new Error(`Unauthenticated!`);
+  // }
   try {
     // revisar si el producto existe
     const producto = await ProductoModel.findById(id)
