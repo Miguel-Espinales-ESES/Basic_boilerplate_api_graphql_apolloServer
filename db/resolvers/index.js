@@ -9,13 +9,16 @@ import { obtenerProductos, obtenerProductoPorId } from './productos/ProductosQue
 
 // cliente
 import { nuevoCliente } from './Cliente/ClienteMutations'
+import { obtenerCliente, obtenerClienteVendedor } from './Cliente/ClienteQueys'
 
 // Resolver
 const resolvers = {
   Query: {
     obtenerUsuario,
     obtenerProductos,
-    obtenerProductoPorId
+    obtenerProductoPorId,
+    obtenerCliente,
+    obtenerClienteVendedor
   },
   Mutation: {
     nuevoUsuario,
