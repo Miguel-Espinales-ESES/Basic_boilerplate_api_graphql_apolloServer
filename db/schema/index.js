@@ -27,6 +27,17 @@ const typeDefs = gql`
         vendedor: ID
     }
 
+    type clienteVendedor {
+        id: ID
+        nombre: String
+        apellido: String
+        empresa: String
+        email: String
+        creado: String
+        telefono: String
+        vendedor: Usuario
+    }
+
     type Token {
         toToken: String
     }
@@ -67,7 +78,7 @@ const typeDefs = gql`
         obtenerProductoPorId(id: ID!) : Producto
         
         #cliente
-        obtenerCliente: [cliente]
+        obtenerCliente: [clienteVendedor]
         obtenerClienteVendedor: [cliente]
     }
 

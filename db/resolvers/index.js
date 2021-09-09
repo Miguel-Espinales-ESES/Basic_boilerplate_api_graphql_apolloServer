@@ -8,8 +8,9 @@ import { nuevoProducto, actualizarProducto, eliminarProducto } from './productos
 import { obtenerProductos, obtenerProductoPorId } from './productos/ProductosQuerys'
 
 // cliente
-import { nuevoCliente } from './Cliente/ClienteMutations'
-import { obtenerCliente, obtenerClienteVendedor } from './Cliente/ClienteQueys'
+import { nuevoCliente, } from './Cliente/ClienteMutations'
+import { obtenerCliente, obtenerClienteVendedor, vendedorField } from './Cliente/ClienteQueys'
+
 
 // Resolver
 const resolvers = {
@@ -27,6 +28,12 @@ const resolvers = {
     actualizarProducto,
     eliminarProducto,
     nuevoCliente
+  },
+  clienteVendedor: {
+    // empresa: (_) => {
+    //   return `${_.nombre}@${_.id}`
+    // },
+    vendedor: vendedorField
   }
 }
 
