@@ -8,9 +8,8 @@ import { nuevoProducto, actualizarProducto, eliminarProducto } from './productos
 import { obtenerProductos, obtenerProductoPorId } from './productos/ProductosQuerys'
 
 // cliente
-import { nuevoCliente, } from './Cliente/ClienteMutations'
+import { nuevoCliente } from './Cliente/ClienteMutations'
 import { obtenerCliente, obtenerClienteVendedor, vendedorField } from './Cliente/ClienteQueys'
-
 
 // Resolver
 const resolvers = {
