@@ -1,5 +1,6 @@
 import ClienteModel from '../../../models/Cliente'
 import UsuarioModel from '../../../models/usuario'
+import isEmpty from 'lodash/isEmpty'
 
 export const obtenerCliente = async (_, { input }, context) => {
   try {
@@ -25,12 +26,15 @@ export const obtenerCliente = async (_, { input }, context) => {
 
 export const obtenerClienteVendedor = async (_, {}, context) => {
   const { usuario: usuarioContext } = context
-  try {
-    const resultado = await ClienteModel.find({ vendedor: usuarioContext.id.toString() })
-    return resultado
-  } catch (e) {
-    console.log(e)
-    throw new Error('Error al obtener la lista de cliente')
+  if (!isEmpty(usuarioContext)) {
+    try {
+      return await ClienteModel.find({ vendedor: usuarioContext.id.toString() })
+    } catch (e) {
+      console.log(e)
+      throw new Error('Error al obtener la lista de cliente')
+    }
+  } else {
+    throw new Error('token inválido no identificado')
   }
 }
 
