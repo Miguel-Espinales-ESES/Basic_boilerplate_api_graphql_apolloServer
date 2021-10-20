@@ -8,8 +8,8 @@ import { nuevoProducto, actualizarProducto, eliminarProducto } from './productos
 import { obtenerProductos, obtenerProductoPorId } from './productos/ProductosQuerys'
 
 // cliente
-import { nuevoCliente } from './Cliente/ClienteMutations'
-import { obtenerCliente, obtenerClienteVendedor, vendedorField } from './Cliente/ClienteQueys'
+import { nuevoCliente, actualizarCliente, eliminarcliente } from './Cliente/ClienteMutations'
+import { obtenerCliente, obtenerClienteVendedor, vendedorField, clienteById } from './Cliente/ClienteQueys'
 
 // Resolver
 const resolvers = {
@@ -18,7 +18,8 @@ const resolvers = {
     obtenerProductos,
     obtenerProductoPorId,
     obtenerCliente,
-    obtenerClienteVendedor
+    obtenerClienteVendedor,
+    clienteById
   },
   Mutation: {
     nuevoUsuario,
@@ -26,7 +27,9 @@ const resolvers = {
     nuevoProducto,
     actualizarProducto,
     eliminarProducto,
-    nuevoCliente
+    nuevoCliente,
+    actualizarCliente,
+    eliminarcliente
   },
   clienteVendedor: {
     // empresa: (_) => {

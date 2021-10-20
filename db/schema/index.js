@@ -80,6 +80,7 @@ const typeDefs = gql`
         #cliente
         obtenerCliente: [clienteVendedor]
         obtenerClienteVendedor: [cliente]
+        clienteById(id: ID!): cliente
     }
 
     type Mutation {
@@ -94,6 +95,8 @@ const typeDefs = gql`
 
         #cliente
         nuevoCliente(input: clienteInput) : cliente
+        actualizarCliente(id: ID!, input:clienteInput!): cliente
+        eliminarcliente(id: ID!) : String
     }
 
 
