@@ -25,3 +25,4 @@ src/components/ModalPDFDiagnost/index.js
 yarn.lock
 
 .vscode/settings.json
+yarn.lock
