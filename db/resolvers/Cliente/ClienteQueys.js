@@ -50,7 +50,7 @@ export const clienteById = async (_, { id }, context) => {
 
       // validar la creacion del cliente por el vendedor
       if (cliente.vendedor.toString() !== usuarioContext.id) {
-        throw new Error('no tienes los permisos necesario')
+        throw new Error('no  tienes los permisos necesario')
       }
 
       return cliente
