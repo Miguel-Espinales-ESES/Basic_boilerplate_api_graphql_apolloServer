@@ -29,6 +29,7 @@ export const nuevoCliente = async (_, { input }, context) => {
 
 export const actualizarCliente = async (_, { id, input }, context) => {
   const { usuario: usuarioContext } = context
+  // validando si hay token
   if (!isEmpty(usuarioContext)) {
     try {
       // verificar si exsite o no el cliente
@@ -56,6 +57,7 @@ export const actualizarCliente = async (_, { id, input }, context) => {
 
 export const eliminarcliente = async (_, { id }, context) => {
   const { usuario: usuarioContext } = context
+  // validando si hay token
   if (!isEmpty(usuarioContext)) {
     try {
       // verificar si exsite o no el cliente

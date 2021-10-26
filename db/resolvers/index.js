@@ -11,6 +11,9 @@ import { obtenerProductos, obtenerProductoPorId } from './productos/ProductosQue
 import { nuevoCliente, actualizarCliente, eliminarcliente } from './Cliente/ClienteMutations'
 import { obtenerCliente, obtenerClienteVendedor, vendedorField, clienteById } from './Cliente/ClienteQueys'
 
+// Pedidos
+import { nuevoPedido } from './Pedidos/PedidosMutations'
+
 // Resolver
 const resolvers = {
   Query: {
@@ -29,7 +32,8 @@ const resolvers = {
     eliminarProducto,
     nuevoCliente,
     actualizarCliente,
-    eliminarcliente
+    eliminarcliente,
+    nuevoPedido
   },
   clienteVendedor: {
     // empresa: (_) => {
