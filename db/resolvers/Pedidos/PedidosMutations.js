@@ -28,8 +28,12 @@ export const nuevoPedido = async (_, { input }, context) => {
       const { id } = articulo
       const productoFind = await ProductoModelo.findById(id)
 
+      if (articulo.cantidad <= 0) {
+        throw new Error(`La cantidad del articulo: "${productoFind.nombre}" tiene que ser mayor a 0`)
+      }
+
       if (articulo.cantidad > productoFind.existencia) {
-        throw new Error(`El articulo: ${productoFind.nombre} excede la cantidad disponible`)
+        throw new Error(`El articulo: "${productoFind.nombre}" excede la cantidad disponible`)
       } else {
         // restar la cantidad de articulo a lo disponible en la colección de productos
         productoFind.existencia = productoFind.existencia - articulo.cantidad
