@@ -3,6 +3,9 @@ import ClienteModel from '../../../models/Cliente'
 import ProductoModelo from '../../../models/Producto'
 import isEmpty from 'lodash/isEmpty'
 
+// utils
+import moment from 'moment'
+
 export const nuevoPedido = async (_, { input }, context) => {
   const { usuario: usuarioContext } = context
   const { clienteId, pedido } = input
@@ -27,6 +30,10 @@ export const nuevoPedido = async (_, { input }, context) => {
 
       if (articulo.cantidad > productoFind.existencia) {
         throw new Error(`El articulo: ${productoFind.nombre} excede la cantidad disponible`)
+      } else {
+        // restar la cantidad de articulo a lo disponible en la colección de productos
+        productoFind.existencia = productoFind.existencia - articulo.cantidad
+        await productoFind.save()
       }
     }
 
@@ -42,4 +49,8 @@ export const nuevoPedido = async (_, { input }, context) => {
   } else {
     throw new Error('token inválido no identificado')
   }
+}
+
+export const PedidoFechaField = async (_, {}, context) => {
+  return moment(_.creado).format()
 }

@@ -12,7 +12,7 @@ import { nuevoCliente, actualizarCliente, eliminarcliente } from './Cliente/Clie
 import { obtenerCliente, obtenerClienteVendedor, clienteById } from './Cliente/ClienteQueys'
 
 // Pedidos
-import { nuevoPedido } from './Pedidos/PedidosMutations'
+import { nuevoPedido, PedidoFechaField } from './Pedidos/PedidosMutations'
 
 //
 import { vendedorField, clienteField } from '../resolvers/globalFieldResolver '
@@ -46,7 +46,8 @@ const resolvers = {
   },
   pedido: {
     vendedor: vendedorField,
-    cliente: clienteField
+    cliente: clienteField,
+    fecha: PedidoFechaField
   }
 }
 
