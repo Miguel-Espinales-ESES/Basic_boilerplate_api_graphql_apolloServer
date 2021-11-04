@@ -10,7 +10,7 @@ const PedidosSchema = mongoose.Schema({
     type: Number,
     require: true
   },
-  cliente: {
+  clienteId: {
     type: mongoose.Schema.Types.ObjectId,
     require: true,
     ref: 'Cliente'

@@ -5,7 +5,7 @@ import isEmpty from 'lodash/isEmpty'
 
 export const nuevoPedido = async (_, { input }, context) => {
   const { usuario: usuarioContext } = context
-  const { clienteId, pedido, total, estado } = input
+  const { clienteId, pedido } = input
 
   // validando si hay token
   if (!isEmpty(usuarioContext)) {
@@ -31,10 +31,14 @@ export const nuevoPedido = async (_, { input }, context) => {
     }
 
     // crear un nuevo pedido
+    const newPedido = new PedidoModelo(input)
 
     // asignarle un vendedor
+    newPedido.vendedor = usuarioContext.id
 
     // guardar en db
+    const resultado = await newPedido.save()
+    return resultado
   } else {
     throw new Error('token inválido no identificado')
   }

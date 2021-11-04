@@ -62,7 +62,3 @@ export const clienteById = async (_, { id }, context) => {
     throw new Error('token inválido no identificado')
   }
 }
-
-export const vendedorField = async (_, {}, context) => {
-  return await UsuarioModel.findById(_.vendedor)
-}

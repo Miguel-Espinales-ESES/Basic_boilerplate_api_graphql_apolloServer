@@ -9,10 +9,13 @@ import { obtenerProductos, obtenerProductoPorId } from './productos/ProductosQue
 
 // cliente
 import { nuevoCliente, actualizarCliente, eliminarcliente } from './Cliente/ClienteMutations'
-import { obtenerCliente, obtenerClienteVendedor, vendedorField, clienteById } from './Cliente/ClienteQueys'
+import { obtenerCliente, obtenerClienteVendedor, clienteById } from './Cliente/ClienteQueys'
 
 // Pedidos
 import { nuevoPedido } from './Pedidos/PedidosMutations'
+
+//
+import { vendedorField, clienteField } from '../resolvers/globalFieldResolver '
 
 // Resolver
 const resolvers = {
@@ -40,6 +43,10 @@ const resolvers = {
     //   return `${_.nombre}@${_.id}`
     // },
     vendedor: vendedorField
+  },
+  pedido: {
+    vendedor: vendedorField,
+    cliente: clienteField
   }
 }
 
