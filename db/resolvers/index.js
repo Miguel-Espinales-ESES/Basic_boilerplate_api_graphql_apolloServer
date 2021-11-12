@@ -13,8 +13,9 @@ import { obtenerCliente, obtenerClienteVendedor, clienteById } from './Cliente/C
 
 // Pedidos
 import { nuevoPedido, PedidoFechaField } from './Pedidos/PedidosMutations'
+import { obtenerPedidos, obtenerPedidoVendedor, obtenerPedidoPorId } from './Pedidos/PedidosQueys'
 
-//
+// global Field Resolver
 import { vendedorField, clienteField } from '../resolvers/globalFieldResolver '
 
 // Resolver
@@ -25,7 +26,10 @@ const resolvers = {
     obtenerProductoPorId,
     obtenerCliente,
     obtenerClienteVendedor,
-    clienteById
+    clienteById,
+    obtenerPedidos,
+    obtenerPedidoVendedor,
+    obtenerPedidoPorId
   },
   Mutation: {
     nuevoUsuario,

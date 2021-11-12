@@ -55,6 +55,19 @@ export const nuevoPedido = async (_, { input }, context) => {
   }
 }
 
+export const actualizarPedido = async (_, { id: idpedido, input }, context) => {
+  const { usuario: usuarioContext } = context
+  if (!isEmpty(usuarioContext)) {
+    try {
+
+    } catch (error) {
+
+    }
+  } else {
+    throw new Error('token inválido no identificado')
+  }
+}
+
 export const PedidoFechaField = async (_, {}, context) => {
   return moment(_.creado).format()
 }

@@ -1,5 +1,4 @@
 import ClienteModel from '../../../models/Cliente'
-import UsuarioModel from '../../../models/usuario'
 import isEmpty from 'lodash/isEmpty'
 
 export const obtenerCliente = async (_, { input }, context) => {

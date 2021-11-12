@@ -114,6 +114,11 @@ const typeDefs = gql`
         obtenerCliente: [clienteVendedor]
         obtenerClienteVendedor: [cliente]
         clienteById(id: ID!): cliente
+
+        #Pedidos
+        obtenerPedidos: [pedido]
+        obtenerPedidoVendedor: [pedido]
+        obtenerPedidoPorId(id: ID!): pedido
     }
 
     type Mutation {
@@ -133,6 +138,7 @@ const typeDefs = gql`
 
         #Pedidos
         nuevoPedido(input: pedidoInput!): pedido
+        actualizarPedido(id: ID!, input:pedidoInput!): pedido
     }
 
 
