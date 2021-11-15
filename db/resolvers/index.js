@@ -12,7 +12,7 @@ import { nuevoCliente, actualizarCliente, eliminarcliente } from './Cliente/Clie
 import { obtenerCliente, obtenerClienteVendedor, clienteById } from './Cliente/ClienteQueys'
 
 // Pedidos
-import { nuevoPedido, PedidoFechaField } from './Pedidos/PedidosMutations'
+import { nuevoPedido, PedidoFechaField, actualizarPedido } from './Pedidos/PedidosMutations'
 import { obtenerPedidos, obtenerPedidoVendedor, obtenerPedidoPorId } from './Pedidos/PedidosQueys'
 
 // global Field Resolver
@@ -40,7 +40,8 @@ const resolvers = {
     nuevoCliente,
     actualizarCliente,
     eliminarcliente,
-    nuevoPedido
+    nuevoPedido,
+    actualizarPedido
   },
   clienteVendedor: {
     // empresa: (_) => {
