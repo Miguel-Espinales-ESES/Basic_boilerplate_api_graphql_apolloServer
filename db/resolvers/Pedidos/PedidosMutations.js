@@ -117,6 +117,43 @@ export const actualizarPedido = async (_, { id: idpedido, input }, context) => {
   }
 }
 
+export const eliminarPedido = async (_, { id: idpedido }, context) => {
+  const { usuario: usuarioContext } = context
+
+  if (!isEmpty(usuarioContext)) {
+    // verificar si el pedidos exsite o no
+    const pedidoExsit = await PedidoModelo.findById(idpedido)
+    if (!pedidoExsit) {
+      throw new Error('Pedido no encontrado')
+    }
+
+    // validar que solo el vendedor puede eliminar el pedido
+    if (pedidoExsit.vendedor.toString() !== usuarioContext.id) {
+      throw new Error('no tienes los permisos necesario')
+    }
+
+    try {
+      // actualizar el inventario con el pedido eliminadao
+      const pedidoProducts = pedidoExsit.pedido
+      for await (const value of pedidoProducts) {
+        const productoFind = await ProductoModelo.findById(value.id)
+        productoFind.existencia = productoFind.existencia + value.cantidad
+        await productoFind.save()
+      }
+      // eliminar de  la base de datos
+      await PedidoModelo.findOneAndDelete({ _id: idpedido })
+      return 'Pedido Eliminado'
+    } catch (e) {
+      console.log(e)
+      throw new Error('Error al eliminar el pedido')
+    }
+  } else {
+    throw new Error('token inválido no identificado')
+  }
+}
+
+// Field Resolvers
+
 export const PedidoFechaField = async (_, {}, context) => {
   return moment(_.creado).format()
 }

@@ -139,6 +139,7 @@ const typeDefs = gql`
         #Pedidos
         nuevoPedido(input: pedidoInput!): pedido
         actualizarPedido(id: ID!, input:pedidoInput!): pedido
+        eliminarPedido(id: ID!): String
     }
 
 
