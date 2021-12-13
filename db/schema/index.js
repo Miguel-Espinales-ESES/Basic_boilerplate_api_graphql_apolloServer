@@ -95,6 +95,10 @@ const typeDefs = gql`
         estado: estadoPedido
     }
 
+    input filterPedidos {
+        estado: estadoPedido
+    }
+
     enum estadoPedido {
         PENDIENTE
         COMPLETADO
@@ -116,8 +120,8 @@ const typeDefs = gql`
         clienteById(id: ID!): cliente
 
         #Pedidos
-        obtenerPedidos: [pedido]
-        obtenerPedidoVendedor: [pedido]
+        obtenerPedidos(filter: filterPedidos): [pedido]
+        obtenerPedidoVendedor(filter: filterPedidos): [pedido]
         obtenerPedidoPorId(id: ID!): pedido
     }
 

@@ -1,12 +1,16 @@
 import PedidoModelo from '../../../models/Pedidos'
-// import ClienteModel from '../../../models/Cliente'
-// import ProductoModelo from '../../../models/Producto'
 import isEmpty from 'lodash/isEmpty'
 
-export const obtenerPedidos = async (_, {}, context) => {
+export const obtenerPedidos = async (_, input, context) => {
   const { usuario: usuarioContext } = context
+
   if (!isEmpty(usuarioContext)) {
     try {
+      // validar filtros
+      if (!isEmpty(input)) {
+        const { filter } = input
+        return await PedidoModelo.find({ ...filter })
+      }
       return await PedidoModelo.find({})
     } catch (e) {
       console.log(e)
@@ -17,10 +21,15 @@ export const obtenerPedidos = async (_, {}, context) => {
   }
 }
 
-export const obtenerPedidoVendedor = async (_, {}, context) => {
+export const obtenerPedidoVendedor = async (_, input, context) => {
   const { usuario: usuarioContext } = context
   if (!isEmpty(usuarioContext)) {
     try {
+      // validar filtros
+      if (!isEmpty(input)) {
+        const { filter } = input
+        return await PedidoModelo.find({ vendedor: usuarioContext.id, ...filter })
+      }
       return await PedidoModelo.find({ vendedor: usuarioContext.id })
     } catch (e) {
       console.log(e)
