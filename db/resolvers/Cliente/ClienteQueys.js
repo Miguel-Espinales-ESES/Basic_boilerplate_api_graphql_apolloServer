@@ -1,5 +1,4 @@
 import ClienteModel from '../../../models/Cliente'
-import UsuarioModel from '../../../models/usuario'
 import isEmpty from 'lodash/isEmpty'
 
 export const obtenerCliente = async (_, { input }, context) => {
@@ -61,8 +60,4 @@ export const clienteById = async (_, { id }, context) => {
   } else {
     throw new Error('token inválido no identificado')
   }
-}
-
-export const vendedorField = async (_, {}, context) => {
-  return await UsuarioModel.findById(_.vendedor)
 }

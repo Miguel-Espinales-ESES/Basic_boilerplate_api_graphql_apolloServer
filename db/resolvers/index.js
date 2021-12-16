@@ -9,33 +9,59 @@ import { obtenerProductos, obtenerProductoPorId } from './productos/ProductosQue
 
 // cliente
 import { nuevoCliente, actualizarCliente, eliminarcliente } from './Cliente/ClienteMutations'
-import { obtenerCliente, obtenerClienteVendedor, vendedorField, clienteById } from './Cliente/ClienteQueys'
+import { obtenerCliente, obtenerClienteVendedor, clienteById } from './Cliente/ClienteQueys'
+
+// Pedidos
+import { nuevoPedido, PedidoFechaField, actualizarPedido, eliminarPedido } from './Pedidos/PedidosMutations'
+import { obtenerPedidos, obtenerPedidoVendedor, obtenerPedidoPorId } from './Pedidos/PedidosQueys'
+
+// global Field Resolver
+import { vendedorField, clienteField } from '../resolvers/globalFieldResolver '
 
 // Resolver
 const resolvers = {
   Query: {
+    // usuario
     obtenerUsuario,
+    // producto
     obtenerProductos,
     obtenerProductoPorId,
+    // cliente
     obtenerCliente,
     obtenerClienteVendedor,
-    clienteById
+    clienteById,
+    // pedidos
+    obtenerPedidos,
+    obtenerPedidoVendedor,
+    obtenerPedidoPorId
   },
   Mutation: {
+    // usuario
     nuevoUsuario,
     autenticarUsuario,
+    // Producto
     nuevoProducto,
     actualizarProducto,
     eliminarProducto,
+    // cliente
     nuevoCliente,
     actualizarCliente,
-    eliminarcliente
+    eliminarcliente,
+    // pedidos
+    nuevoPedido,
+    actualizarPedido,
+    eliminarPedido
   },
   clienteVendedor: {
     // empresa: (_) => {
     //   return `${_.nombre}@${_.id}`
     // },
     vendedor: vendedorField
+  },
+  pedido: {
+    vendedor: vendedorField,
+    cliente: clienteField,
+    fecha: PedidoFechaField
   }
 }
 
