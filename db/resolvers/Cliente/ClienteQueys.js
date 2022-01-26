@@ -1,4 +1,5 @@
 import ClienteModel from '../../../models/Cliente'
+import PedidoModelo from '../../../models/Pedidos'
 import isEmpty from 'lodash/isEmpty'
 
 export const obtenerCliente = async (_, { input }, context) => {
@@ -53,6 +54,44 @@ export const clienteById = async (_, { id }, context) => {
       }
 
       return cliente
+    } catch (e) {
+      console.log(e)
+      throw new Error('Error al obtener el cliente')
+    }
+  } else {
+    throw new Error('token inválido no identificado')
+  }
+}
+
+export const mejoresClientes = async (_, {}, context) => {
+  const { usuario: usuarioContext } = context
+  if (!isEmpty(usuarioContext)) {
+    try {
+      const topCliente = await PedidoModelo.aggregate([
+        { $match: { estado: 'COMPLETADO' } },
+        {
+          $group: {
+            _id: '$clienteId',
+            total: { $sum: '$total' }
+          }
+        },
+        {
+          $lookup: {
+            from: 'clientes',
+            localField: '_id',
+            foreignField: '_id',
+            as: 'cliente'
+          }
+        },
+        {
+          $unwind: '$cliente'
+        },
+        {
+          $sort: { total: -1 }
+        }
+      ])
+
+      return topCliente
     } catch (e) {
       console.log(e)
       throw new Error('Error al obtener el cliente')

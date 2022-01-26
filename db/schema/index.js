@@ -24,7 +24,7 @@ const typeDefs = gql`
         email: String
         creado: String
         telefono: String
-        vendedor: ID
+        vendedor: Usuario
     }
 
     type clienteVendedor {
@@ -55,6 +55,11 @@ const typeDefs = gql`
 
     type Token {
         toToken: String
+    }
+
+    type TopClientes {
+        total: Float
+        cliente: cliente
     }
 
     input UsuarioInput {
@@ -123,6 +128,9 @@ const typeDefs = gql`
         obtenerPedidos(filter: filterPedidos): [pedido]
         obtenerPedidoVendedor(filter: filterPedidos): [pedido]
         obtenerPedidoPorId(id: ID!): pedido
+
+        #Busquedas Avanzadas
+        mejoresClientes: [TopClientes]
     }
 
     type Mutation {

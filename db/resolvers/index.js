@@ -9,7 +9,7 @@ import { obtenerProductos, obtenerProductoPorId } from './productos/ProductosQue
 
 // cliente
 import { nuevoCliente, actualizarCliente, eliminarcliente } from './Cliente/ClienteMutations'
-import { obtenerCliente, obtenerClienteVendedor, clienteById } from './Cliente/ClienteQueys'
+import { obtenerCliente, obtenerClienteVendedor, clienteById, mejoresClientes } from './Cliente/ClienteQueys'
 
 // Pedidos
 import { nuevoPedido, PedidoFechaField, actualizarPedido, eliminarPedido } from './Pedidos/PedidosMutations'
@@ -30,6 +30,7 @@ const resolvers = {
     obtenerCliente,
     obtenerClienteVendedor,
     clienteById,
+    mejoresClientes,
     // pedidos
     obtenerPedidos,
     obtenerPedidoVendedor,
@@ -52,6 +53,9 @@ const resolvers = {
     actualizarPedido,
     eliminarPedido
   },
+  cliente: {
+    vendedor: vendedorField
+  },
   clienteVendedor: {
     // empresa: (_) => {
     //   return `${_.nombre}@${_.id}`
@@ -62,6 +66,11 @@ const resolvers = {
     vendedor: vendedorField,
     cliente: clienteField,
     fecha: PedidoFechaField
+  },
+  TopClientes: {
+    cliente: (_) => {
+      return { ..._.cliente, id: _.cliente._id }
+    }
   }
 }
 
