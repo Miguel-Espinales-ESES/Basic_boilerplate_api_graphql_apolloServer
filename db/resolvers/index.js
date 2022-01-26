@@ -16,7 +16,7 @@ import { nuevoPedido, PedidoFechaField, actualizarPedido, eliminarPedido } from 
 import { obtenerPedidos, obtenerPedidoVendedor, obtenerPedidoPorId } from './Pedidos/PedidosQueys'
 
 // global Field Resolver
-import { vendedorField, clienteField } from '../resolvers/globalFieldResolver '
+import { vendedorField, clienteField } from '../resolvers/globalFieldResolver'
 
 // Resolver
 const resolvers = {
