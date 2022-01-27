@@ -35,7 +35,7 @@ export const mejoresVendedores = async (_, {}, context) => {
       return topVendedores
     } catch (e) {
       console.log(e)
-      throw new Error('Error al obtener el cliente')
+      throw new Error('Error al obtener los vendedores')
     }
   } else {
     throw new Error('token inválido no identificado')

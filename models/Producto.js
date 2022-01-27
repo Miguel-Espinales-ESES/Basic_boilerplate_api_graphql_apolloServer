@@ -23,4 +23,6 @@ const ProductoSchema = mongoose.Schema({
   }
 })
 
+ProductoSchema.index({ nombre: 'text' })
+
 export default model('Producto', ProductoSchema)

@@ -1,4 +1,5 @@
 import ProductoModel from '../../../models/Producto'
+import isEmpty from 'lodash/isEmpty'
 
 export const obtenerProductos = async (_, { input }) => {
   try {
@@ -23,5 +24,21 @@ export const obtenerProductoPorId = async (_, { id }, context) => {
     return producto
   } catch (e) {
     throw new Error('Producto no encontrado')
+  }
+}
+
+export const buscarProducto = async (_, { texto }, context) => {
+  const { usuario: usuarioContext } = context
+  if (!isEmpty(usuarioContext)) {
+    try {
+      const productos = await ProductoModel.find({ $text: { $search: texto } })
+      console.log(productos)
+      return productos
+    } catch (e) {
+      console.log(e)
+      throw new Error('Productos no encontrados')
+    }
+  } else {
+    throw new Error('token inválido no identificado')
   }
 }
