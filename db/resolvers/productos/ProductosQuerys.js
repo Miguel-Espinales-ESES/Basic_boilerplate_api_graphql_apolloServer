@@ -32,7 +32,6 @@ export const buscarProducto = async (_, { texto }, context) => {
   if (!isEmpty(usuarioContext)) {
     try {
       const productos = await ProductoModel.find({ $text: { $search: texto } })
-      console.log(productos)
       return productos
     } catch (e) {
       console.log(e)
