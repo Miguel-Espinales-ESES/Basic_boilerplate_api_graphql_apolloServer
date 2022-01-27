@@ -1,6 +1,6 @@
 
 // Usuario
-import { obtenerUsuario } from './usuario/UsuarioQuerys'
+import { obtenerUsuario, mejoresVendedores } from './usuario/UsuarioQuerys'
 import { nuevoUsuario, autenticarUsuario } from './usuario/UsuarioMutations'
 
 // producto
@@ -23,6 +23,7 @@ const resolvers = {
   Query: {
     // usuario
     obtenerUsuario,
+    mejoresVendedores,
     // producto
     obtenerProductos,
     obtenerProductoPorId,
@@ -53,6 +54,7 @@ const resolvers = {
     actualizarPedido,
     eliminarPedido
   },
+  // Field Resolvers
   cliente: {
     vendedor: vendedorField
   },
@@ -70,6 +72,11 @@ const resolvers = {
   TopClientes: {
     cliente: (_) => {
       return { ..._.cliente, id: _.cliente._id }
+    }
+  },
+  TopVendedor: {
+    vendedor: (_) => {
+      return { ..._.vendedor, id: _.vendedor._id }
     }
   }
 }
